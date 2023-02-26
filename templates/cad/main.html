@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CAD Inspector</title>
+{#    <link rel="stylesheet" href="../static/cad/css/cad_style.css">#}
+
+  </head>
+</head>
+
+<header>
+  <div class="h__container">
+    <a class="logo">INSPECTOR</a>
+    <nav>
+      <ul> {% if user.is_authenticated %}
+        <li><a>{{ request.session.fname }}</a></li>
+          {% endif %}
+          <li>
+
+               <button class="button login__submit" onclick="location.href = '/cad/logout_user';">
+                            <span class="button__text">Exit</span>
+                            <i class="button__icon fas fa-chevron-right"></i>
+                    </button>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<body>
+    <div class="container">
+            <div class="panel">
+                    <button class="button status10-6" onclick="location.href = '/cad/logout_user';">
+                            <span class="button__text">10-8</span>
+                            <i class="button__icon fas fa-chevron-left"></i>
+                    </button>
+                    <button class="button status10-8" onclick="location.href = '/cad/logout_user';">
+                            <span class="button__text">10-6</span>
+                            <i class="button__icon fas fa-chevron-left"></i>
+                    </button>
+                     <button class="button status10-23" onclick="location.href = '/cad/logout_user';">
+                            <span class="button__text">10-23</span>
+                            <i class="button__icon fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            <table class="engine77">
+                <tr>
+                    <td>{{ query_results.0.unit_name }}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td>{{ query_results.0.status }}</td>
+                </tr>
+            </table>
+        </div>
+
+</body>
+</html>
+
+{#    <form method="post" action="/cad/add_unit">#}
+{#            {% csrf_token %}#}
+{#            <div class="form-group">#}
+{#                <label for="username">Unit name</label>#}
+{#                <input type="text" class="form-control" id="unit_name" name="unit_name" placeholder="unit_name" Required>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="fname">Status</label>#}
+{#                <input type="text" class="form-control" id="status" name="status" placeholder="status" Required>#}
+{#            </div>#}
+{##}
+{#            <button type="submit" class="btn btn-primary">Add</button>#}
+{#        </form>#}
+{#    <form method="post">#}
+{#        {% csrf_token %}#}
+{#            <div class="form-group">#}
+{#                <label for="username">Unit name</label>#}
+{#                <input type="text" class="form-control" id="unit_name" name="unit_name" placeholder="unit_name" Required>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="fname">Status</label>#}
+{#                <input type="text" class="form-control" id="status" name="status" placeholder="status" Required>#}
+{#            </div>#}
+{##}
+{#        <button type="submit" onclick=r"/cad/change_status_10_6" class="btn btn-primary" value="10-6">10-6</button>#}
+{##}
+{#        <button type="submit" onclick=r"/cad/change_status_10_8" class="btn btn-primary" value="10-8">10-8</button>#}
+{#        </form>#}
+{##}
+{#<table class="engine77">#}
+{#    <tr>#}
+{#        <td>{{ query_results.0.unit_name }}</td>#}
+{#        <td></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#        <td>Status:</td>#}
+{#        <td>{{ query_results.0.status }}</td>#}
+{#    </tr>#}
+{#</table>#}
+
+{#</body>#}
+{#</html>#}

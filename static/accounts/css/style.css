@@ -1,0 +1,105 @@
+/* inter-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../fonts/inter-v12-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+       url('../../fonts/inter-v12-latin-regular.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* inter-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../../fonts/inter-v12-latin-800.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+       url('../../fonts/inter-v12-latin-800.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+html{
+  box-sizing: border-box;
+}
+*, *::before, *::after{
+  box-sizing: inherit;
+}
+
+
+body {
+	background: #111111;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+div#container p {
+	position: relative;
+}.container p {
+	font-size: 16px;
+	position: absolute;
+	top: 230px;
+	align-items: center;
+	text-transform: uppercase;
+	color: white;
+	width: 350px;
+	text-align: center;
+	font-family: Inter;
+}
+
+.screen {
+	background: #333333;
+	position: relative;
+	height: 340px;
+	width: 520px;
+	box-shadow: 0px 0px 24px #222222;
+}
+
+.login__field {
+	padding-top: 55px;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-inline: 40px;
+}
+
+.login__input {
+	font-family: Inter;
+	border: none;
+	font-size: 16px;
+	background: #444444;
+	padding-left: 24px;
+	width: 440px;
+    height: 52px;
+	transition: .2s;
+}
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+	outline: none;
+	border-bottom-color: #FFFFFF;
+}
+
+.login__submit {
+	border: none;
+	background: #60BD75;
+	font-family: Inter;
+	font-size: 18px;
+	margin-top: 56px;
+	padding: 27px;
+	text-transform: uppercase;
+	width: 100%;
+	color: #FFFFFF;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+	box-shadow: 0px 0px 10px #56b06a;
+}
+
+

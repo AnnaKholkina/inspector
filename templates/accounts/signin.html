@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inspector Auth</title>
+    <link rel="stylesheet" href="static/accounts/css/reset.css">
+    <link rel="stylesheet" href="static/accounts/css/style.css">
+    <style>
+    .nubex3 {
+    font-weight: 600;
+   }
+    input[type='text'] { font-size: 16px; font-family: Inter; color: #FFFFFF;}
+    input[type='password'] { font-size: 16px; font-family: Inter; color: #FFFFFF;}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="welcome">Welcome to <span class="nubex3">inspector</span></p>
+        <div class="screen">
+            <div class="screen__content">
+                <form class="login" method="post" action="/signin" class="mb-2">
+                    {% csrf_token %}
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input type="text" class="login__input" id="username" name="username" placeholder="USERNAME" Required>
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-lock"></i>
+                        <input type="password" class="login__input" id="pass1" name="pass1" placeholder="PASSWORD" Required>
+                    </div>
+
+                    <button class="button login__submit">
+                            <span class="button__text">LOG IN</span>
+                            <i class="button__icon fas fa-chevron-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
