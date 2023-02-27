@@ -2,7 +2,8 @@ from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from cad.models import Unit
+from cad.models import Unit, Member
+
 
 def main_cad(request):
     if not request.user.is_authenticated:
@@ -19,18 +20,20 @@ def add_unit(request):
         unit_table.save()
     return render(request, "cad/main.html")
 
-def change_status_10_6(request):
-    if request.method == 'POST':
-        Unit.objects.filter(unit_name=request.POST['unit_name']).update(status='10-6')
-    return render(request, "cad/main.html")
-
-def change_status_10_8(request):
-    if request.method == 'POST':
-        Unit.objects.filter(unit_name=request.POST['unit_name']).update(status='10-8')
+def change_status(request, username, status):
+    member_in_unit = Member.objects.get(name=username).unit_name
+    units = Unit.objects.get(unit_name=member_in_unit)
+    units.status = status
+    units.save()
     return render(request, "cad/main.html")
 
 def add_member(request):
-    pass
+    if request.method == 'POST':
+        unit_name = request.POST['unit_name']
+        username = request.POST['username']
+        members = Member(unit_name=unit_name, name=username)
+        members.save()
+    return render(request, "cad/main.html")
 
 def logout_user(request):
     logout(request)

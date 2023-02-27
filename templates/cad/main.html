@@ -16,6 +16,7 @@
     <nav>
       <ul> {% if user.is_authenticated %}
         <li><a>{{ request.session.fname }}</a></li>
+          <li><a>{{ request.session.username }}</a></li>
           {% endif %}
           <li>
 
@@ -30,20 +31,6 @@
 </header>
 <body>
     <div class="container">
-            <div class="panel">
-                    <button class="button status10-6" onclick="location.href = '/cad/logout_user';">
-                            <span class="button__text">10-8</span>
-                            <i class="button__icon fas fa-chevron-left"></i>
-                    </button>
-                    <button class="button status10-8" onclick="location.href = '/cad/logout_user';">
-                            <span class="button__text">10-6</span>
-                            <i class="button__icon fas fa-chevron-left"></i>
-                    </button>
-                     <button class="button status10-23" onclick="location.href = '/cad/logout_user';">
-                            <span class="button__text">10-23</span>
-                            <i class="button__icon fas fa-chevron-left"></i>
-                    </button>
-                </div>
             <table class="engine77">
                 <tr>
                     <td>{{ query_results.0.unit_name }}</td>
@@ -54,6 +41,32 @@
                     <td>{{ query_results.0.status }}</td>
                 </tr>
             </table>
+        <form action="{% url 'change_status' request.session.username '10-6' %}" method=POST>
+            {% csrf_token %}
+        <button id="approve-btn" type="submit">10-6</button>
+        </form>
+        <form action="{% url 'change_status' request.session.username '10-8' %}" method=POST>
+            {% csrf_token %}
+        <button id="approve-btn" type="submit">10-8</button>
+        </form>
+        <form action="{% url 'change_status' request.session.username '10-12' %}" method=POST>
+            {% csrf_token %}
+        <button id="approve-btn" type="submit">10-12</button>
+        </form>
+        <form method="post" action="/cad/add_member">
+                {% csrf_token %}
+                    <div class="form-group">
+                        <label for="unit_name">Unit name</label>
+                        <input type="text" class="form-control" id="unit_name" name="unit_name" placeholder="unit_name" Required>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="username" Required>
+                    </div>
+
+                <button type="submit"class="btn btn-primary">Add</button>
+
+        </form>
         </div>
 
 </body>

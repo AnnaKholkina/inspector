@@ -4,7 +4,7 @@ from . import views
 from cad import views as cad_views
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.signin, name='signin'),
     path('signin', views.signin, name='signin'),
     path('signup', views.signup, name='signup'),
     path('signout', views.signout, name='signout'),

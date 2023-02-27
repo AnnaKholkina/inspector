@@ -37,10 +37,9 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname = user.first_name
-            lname = user.last_name
             messages.success(request, "Logged In Sucessfully!!")
             request.session['fname'] = fname
-            request.session['lname'] = lname
+            request.session['username'] = username
             return redirect('/cad/')
         else:
             messages.error(request, "Bad Credentials!!")
