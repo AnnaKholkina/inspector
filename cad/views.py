@@ -27,12 +27,23 @@ def change_status(request, username, status):
     units.save()
     return render(request, "cad/main.html")
 
-def add_member(request):
+def add_member_to_unit(request, username, unit):
     if request.method == 'POST':
-        unit_name = request.POST['unit_name']
-        username = request.POST['username']
-        members = Member(unit_name=unit_name, name=username)
-        members.save()
+        if Member.objects.filter(name=username).exists():
+            member_exist = Member.objects.get(name=username)
+            member_exist.unit_name = unit
+            member_exist.save()
+        else:
+            member_not_exist = Member(unit_name=unit, name=username)
+            member_not_exist.save()
+    return render(request, "cad/main.html")
+
+
+def delete_member_from_unit(request, username, unit):
+    if request.method == 'POST':
+        if Member.objects.filter(name=username).exists():
+            Member.objects.get(name=username).delete()
+
     return render(request, "cad/main.html")
 
 def logout_user(request):

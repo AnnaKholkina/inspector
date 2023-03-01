@@ -53,7 +53,7 @@
             {% csrf_token %}
         <button id="approve-btn" type="submit">10-12</button>
         </form>
-        <form method="post" action="/cad/add_member">
+        <form method="post" action="/cad/add_member_to_unit">
                 {% csrf_token %}
                     <div class="form-group">
                         <label for="unit_name">Unit name</label>
@@ -65,8 +65,26 @@
                     </div>
 
                 <button type="submit"class="btn btn-primary">Add</button>
-
-        </form>
+            </form>
+            <br>
+            <br>
+            <br>
+        <form action="{% url 'add_member_to_unit' request.session.username 'TL10' %}" method=POST>
+            {% csrf_token %}
+        <button id="approve-btn" type="submit">Join to TL10</button>
+            </form>
+        <form action="{% url 'delete_member_from_unit' request.session.username 'TL10' %}" method=POST>
+            {% csrf_token %}
+        <button id="approve-btn" type="submit">Leave the TL10</button>
+            </form>
+            <form action="{% url 'add_member_to_unit' request.session.username 'RA3' %}" method=POST>
+            {% csrf_token %}
+        <button id="approve-btn" type="submit">Join to RA3</button>
+           </form>
+        <form action="{% url 'delete_member_from_unit' request.session.username 'RA3' %}" method=POST>
+            {% csrf_token %}
+        <button id="approve-btn" type="submit">Leave the RA3</button>
+            </form>
         </div>
 
 </body>
