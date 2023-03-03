@@ -30,13 +30,19 @@ def change_status(request, username, status):
 def add_member_to_unit(request, username, unit):
     if request.method == 'POST':
         if Member.objects.filter(name=username).exists():
-            member_exist = Member.objects.get(name=username)
-            member_exist.unit_name = unit
-            member_exist.save()
+            members = Member.objects.get(name=username)
+            members.unit_name = unit
+            members.save()
         else:
-            member_not_exist = Member(unit_name=unit, name=username)
-            member_not_exist.save()
-    return render(request, "cad/main.html")
+            members = Member(unit_name=unit, name=username)
+            members.save()
+        members_in_unit = Member.objects.filter(unit_name=unit)
+
+        list_of_members = []
+        for member in members_in_unit:
+            list_of_members.append(member)
+
+    return render(request, "cad/main.html", context={'members': list_of_members})
 
 
 def delete_member_from_unit(request, username, unit):
